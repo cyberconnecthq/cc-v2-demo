@@ -1,19 +1,25 @@
 import React from "react";
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
 
 import CyberConnect, { Env } from "@cyberlab/cyberconnect-v2";
+import { useAccount, useConnect, useEnsName } from "wagmi";
+import { InjectedConnector } from "wagmi/connectors/injected";
 
 export default function Home() {
+  const { address, isConnected } = useAccount();
   const [cc, setCC] = React.useState<CyberConnect>();
-  const [address, setAddress] = React.useState("");
   const [handle, setHandle] = React.useState("");
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  });
+
   React.useEffect(() => {
     const cyberConnect = new CyberConnect({
       namespace: "CyberConnect",
       env: Env.STAGING,
       provider: (window as any)?.ethereum,
     });
+
     setCC(cyberConnect);
   }, []);
 
@@ -25,32 +31,29 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            columnGap: 10,
-            justifyContent: "center",
-            width: 300,
-          }}
-        >
-          <p>Address</p>
-          <input value={address} onChange={(e) => setAddress(e.target.value)} />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            columnGap: 10,
-            justifyContent: "center",
-            width: 300,
-          }}
-        >
-          <p>Follow handle</p>
-          <input value={handle} onChange={(e) => setHandle(e.target.value)} />
-        </div>
-        <button onClick={() => cc?.follow(address, handle)}>follow</button>
+      <main>
+        {isConnected && address ? (
+          <>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                columnGap: 10,
+                justifyContent: "center",
+                width: 300,
+              }}
+            >
+              <p>Follow handle</p>
+              <input
+                value={handle}
+                onChange={(e) => setHandle(e.target.value)}
+              />
+            </div>
+            <button onClick={() => cc?.follow(address, handle)}>follow</button>
+          </>
+        ) : (
+          <button onClick={() => connect()}>Connect Wallet</button>
+        )}
       </main>
     </>
   );
