@@ -1,10 +1,11 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
+import { bscTestnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [mainnet],
+  [bscTestnet],
   [publicProvider()]
 );
 const client = createClient({

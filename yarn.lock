@@ -115,10 +115,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@cyberlab/cyberconnect-v2@^0.0.1-alpha.16":
-  version "0.0.1-alpha.16"
-  resolved "https://registry.yarnpkg.com/@cyberlab/cyberconnect-v2/-/cyberconnect-v2-0.0.1-alpha.16.tgz#ec70c90a1dbe5861be055eb1d6f2447c4121c124"
-  integrity sha512-DdZqXHIeT6kbfsI3BM8FmlPf9zfd+Hvv7kgc8bMVWMvD107QRU62A3k7UQHIaYcvD6RVYnhFHfQQzJAp533AYw==
+"@cyberlab/cyberconnect-v2@^0.0.1-alpha.18":
+  version "0.0.1-alpha.17"
+  resolved "https://registry.yarnpkg.com/@cyberlab/cyberconnect-v2/-/cyberconnect-v2-0.0.1-alpha.17.tgz#9fa230927a540c2b69e88c44bf7d4c2d8948f035"
+  integrity sha512-GzJbmrmcc3/fNvMRmbt4gT9aVkfrbFNf0PDTgvL9VC3gs+2165o4C6wiIFlO75EsjTy5kffoXyGO4ial+e0NsA==
   dependencies:
     "@ethersproject/bytes" "^5.6.1"
     "@ethersproject/strings" "^5.6.0"
