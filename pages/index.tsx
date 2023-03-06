@@ -95,7 +95,10 @@ export default function Home() {
               }}
             >
               <p>Body</p>
-              <input value={body} onChange={(e) => setBody(e.target.value)} />
+              <textarea
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
             </div>
             {contentId && <p>Content ID: {contentId}</p>}
             <div
