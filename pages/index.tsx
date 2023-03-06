@@ -22,7 +22,6 @@ export default function Home() {
     setIsMounted(true);
     const cyberConnect = new CyberConnect({
       namespace: "CyberConnect",
-      env: Env.STAGING,
       provider: (window as any)?.ethereum,
     });
 
@@ -35,8 +34,6 @@ export default function Home() {
       body: body,
       author: handle,
     });
-
-    console.log(res);
 
     setContentId(res?.contentID);
   };
