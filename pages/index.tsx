@@ -23,6 +23,7 @@ export default function Home() {
     const cyberConnect = new CyberConnect({
       namespace: "CyberConnect",
       provider: (window as any)?.ethereum,
+      env: Env.PRODUCTION,
     });
 
     setCC(cyberConnect);
